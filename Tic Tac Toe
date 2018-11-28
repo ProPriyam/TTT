@@ -1,0 +1,129 @@
+#module 1
+
+inlist = [" "," "," "," "," "," "," "," "," "]
+
+def disp_board():
+    print("    |    |   \n")
+    print(" ",inlist[6], "| ",inlist[7],"| ",inlist[8]," \n")
+    print("    |    |   \n")
+    print("--------------")
+    print("    |    |   \n")
+    print(" ",inlist[3], "| ",inlist[4],"| ",inlist[5]," \n")
+    print("    |    |   \n")
+    print("--------------")
+    print("    |    |   \n")
+    print(" ",inlist[0], "| ",inlist[1],"| ",inlist[2]," \n")
+    print("    |    |   \n")
+
+    
+    #module 2
+
+def replay():
+    x = input("enter YES if you wanna play again and NO if you don't")
+    return x
+
+def win_check(L1):
+    
+    if L1[0] == L1[1] and L1[1] == L1[2]:
+        if L1[0] == " " or L1[1] == " " or L1[2] == " ":
+            return -1
+        else: 
+            print("you won")
+            if replay() == "YES":
+                return 1
+            else:
+                return 0
+        
+    if L1[0] == L1[3] and L1[3] == L1[6]:
+        if L1[0] == " " or L1[3] == " " or L1[6] == " ":
+            return -1
+        else:
+            print("you won")
+            if replay() == "YES":
+                return 1
+            else:
+                return 0
+        
+    if L1[0] == L1[4] and L1[4] == L1[8]:
+        if L1[0] == " " or L1[4] == " " or L1[8] == " ":
+            return -1
+        else:
+            print("you won")
+            if replay() == "YES":
+                return 1
+            else:
+                return 0
+        
+    if L1[8] == L1[7] and L1[7] == L1[6]:
+        if L1[8] == " " or L1[7] == " " or L1[6] == " ":
+            return -1
+        else:
+            print("you won")
+            if replay() == "YES":
+                return 1
+            else:
+                return 0
+    
+    if L1[8] == L1[5] and L1[5] == L1[2]:
+        if L1[8] == " " or L1[5] == " " or L1[2] == " ":
+            return -1
+        else:
+            print("you won")
+            if replay() == "YES":
+                return 1
+            else:
+                return 0
+        
+    if L1[6] == L1[4] and L1[4] == L1[2]:
+        if L1[6] == " " or L1[4] == " " or L1[2] == " ":
+            return -1
+        else:
+            print("you won")
+            if replay() == "YES":
+                return 1
+            else:
+                return 0
+        
+    if L1[7] == L1[4] and L1[4] == L1[1]:
+        if L1[7] == " " or L1[4] == " " or L1[1] == " ":
+            return -1
+        else:
+            print("you won")
+            if replay() == "YES":
+                return 1
+            else:
+                return 0
+        
+    if L1[3] == L1[4] and L1[4] == L1[5]:
+        if L1[3] == " " or L1[4] == " " or L1[5] == " ":
+            return -1
+        else:
+            print("you won")
+            if replay() == "YES":
+                return 1
+            else:
+                return 0
+    else:
+        return -1
+       
+ #module 3
+
+def input_outputer():
+    c = input(" Player 1: what do you wanna start with 'X' or 'O' ")
+    if c == 'X':
+        flag = 2
+    else:
+        flag = 1
+    while win_check(inlist) == -1 :
+        a = int(input("enter the position you number you wanna play at :  "))
+        if flag%2 == 0:
+            inlist[a - 1] = "X"
+        else:
+            inlist[a - 1] = "O"
+            
+        flag = flag + 1
+        disp_board()
+    
+
+while replay() != "NO":
+    input_outputer()
